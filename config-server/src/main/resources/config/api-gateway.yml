@@ -19,10 +19,10 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: user-service
+      - id: user-integration
         uri:
-          lb://user-service
+          lb://user-integration
         predicates:
-        - Path=/user/**
+        - Path=/api/user/**
         filters:
-        - StripPrefix=1
+        - StripPrefix=2

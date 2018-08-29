@@ -1,0 +1,14 @@
+info:
+  component: User Integration Service
+  
+server:
+  port: 8201
+
+eureka:
+  client:
+    register-with-eureka: true
+    registry-fetch-interval-seconds: 5
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
