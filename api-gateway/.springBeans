@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:com.mv.challenge.ApiGatewayApplication</config>
+		<config>java:com.ms.challenge.ApiGatewayApplication</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
