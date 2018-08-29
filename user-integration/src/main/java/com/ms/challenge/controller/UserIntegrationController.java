@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ms.challenge.client.DepartmentClient;
 import com.ms.challenge.client.UserClient;
+import com.ms.challenge.entity.User;
 
 @RestController
 public class UserIntegrationController {
@@ -16,12 +18,22 @@ public class UserIntegrationController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserIntegrationController.class);
 
 	@Autowired
-	private UserClient client;
+	private UserClient userClient;
+	
+	@Autowired
+	private DepartmentClient departmentClient;
 	
 	
 	@GetMapping(value = "/{id}", produces = "application/json")
 	public ResponseEntity<?> getUserById(@PathVariable int id) {
 		LOGGER.info("Getting user from Integration");
-		return ResponseEntity.ok(client.getUserById(id));
+		return ResponseEntity.ok(userClient.getUserById(id));
+	}
+	
+	@GetMapping(value = "/with-department/{id}")
+	public User getUserByIdWithDepartment(@PathVariable int id) {
+		User user = userClient.getUserById(id);
+		user.setDepartment(departmentClient.getDepartmentById(1));
+		return user;
 	}
 }

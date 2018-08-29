@@ -4,11 +4,12 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.ms.challenge.entity.User;
+import com.ms.challenge.entity.Department;
 
-@FeignClient("user-service")
-public interface UserClient {
+@FeignClient("department-service")
+public interface DepartmentClient {
+	
+	@GetMapping(value = "/{id}")
+	public Department getDepartmentById(@PathVariable int id);
 
-	@GetMapping("/{id}")
-	public User getUserById(@PathVariable int id);
 }
