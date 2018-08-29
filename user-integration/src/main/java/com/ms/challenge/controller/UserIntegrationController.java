@@ -30,8 +30,9 @@ public class UserIntegrationController {
 		return ResponseEntity.ok(userClient.getUserById(id));
 	}
 	
-	@GetMapping(value = "/with-department/{id}")
+	@GetMapping(value = "/{id}/with-department")
 	public User getUserByIdWithDepartment(@PathVariable int id) {
+		LOGGER.info("Getting user with departments from Integration");
 		User user = userClient.getUserById(id);
 		user.setDepartment(departmentClient.getDepartmentById(1));
 		return user;

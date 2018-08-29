@@ -15,7 +15,7 @@ public class UserController {
 
 	@GetMapping(value = "/{id}", produces = "application/json")
 	public User getUser(@PathVariable int id) {
-		LOGGER.info("Getting User");
+		LOGGER.info("User Service: getUser: " + 1);
 		return new User(id, "Teste");
 	}
 }
